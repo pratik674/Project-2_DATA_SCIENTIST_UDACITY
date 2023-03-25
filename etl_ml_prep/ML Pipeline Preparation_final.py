@@ -31,7 +31,7 @@ from sklearn.model_selection import GridSearchCV
 import sqlite3
 import sqlalchemy
 from sqlalchemy import create_engine
-import pandas as pd
+import pickle
 
 
 # In[2]:
@@ -272,7 +272,7 @@ def build_model2():
     ])
 
     parameters={'vect__max_features': (None, 5000),
-                'ngram_range': [(1,1),(1,2),(1,3)]
+                'ngram_range': [(1,1),(1,2),(1,3)],
                 'tfidf__use_idf': (True, False),
                 'clf__estimator__n_estimators': [50, 100],
                 'clf__estimator__min_samples_split': [2, 3],
