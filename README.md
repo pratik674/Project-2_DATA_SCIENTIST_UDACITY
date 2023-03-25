@@ -77,8 +77,10 @@ Screenshot of the Disaster Response Pipeline: shared in the main folder
 Reflection
 I am satisfied with the result and fully functional web app. Although everything works, there is still enough room for improvements:
 
-Testing different estimators to optimise the classification (RandomForestClassifier() was used in this project. Apart from this BernouilleNB was also tested and its run time is faster than that for RandomForestClassifier
-Setting an extended list of parameters for GridSearchCV to optimise the model (long performance for RandomForestClassifier ).
+Testing different estimators to optimise the classification (RandomForestClassifier() was used in this project. Apart from this BernouilleNB was also tested and its run time is faster than that for RandomForestClassifier. 
+Setting an extended list of parameters for GridSearchCV to optimise the model (long performance for RandomForestClassifier ). 
+This dataset is imbalanced (ie some labels like water have few examples). In your README, discuss how this imbalance, how that affects training the model, and your thoughts about emphasizing precision or recall for the various categories.
+
 
 Instructions
 This instruction were originally made by the team at Udacity's.
