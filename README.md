@@ -103,6 +103,8 @@ Scikit learn , nltk, pandas libraries were used to achieve the objective of this
 
 Go to http://0.0.0.0:3000/
 
+Please the Medium blog post for this project at https://medium.com/@iitkgp.pratik/using-ml-pipeline-to-create-an-efficient-disaster-response-system-551c4972ce3d
+
 
 Acknowledgments
 I would like to thank the team from Udacity's for the detailed outline for this project and Figure Eight for providing the data to work with.
