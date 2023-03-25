@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Mar 25 01:14:28 2023
+Created on Sat Mar 25 10:52:10 2023
 
 @author: prati
 """
@@ -9,14 +9,15 @@ import sys
 
 # import libraries
 import nltk
-nltk.download(['punkt', 'wordnet', 'stopwords'])
+nltk.download(['punkt', 'wordnet'])
 import re
 import numpy as np
 import pandas as pd
+import pickle
 from nltk.tokenize import word_tokenize,sent_tokenize
-from nltk import pos_tag
+#from nltk import pos_tag
 from nltk.stem import WordNetLemmatizer
-from nltk.corpus import stopwords
+#from nltk.corpus import stopwords
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import confusion_matrix
 from sklearn.ensemble import RandomForestClassifier
@@ -78,6 +79,7 @@ def tokenize(text):
 
     return clean_tokens
 
+    
 
 def build_model():
     """
@@ -100,9 +102,8 @@ def build_model():
     }
 
     cv = GridSearchCV(pipeline, param_grid=parameters, n_jobs=-1, verbose=3)
-
+    
     return cv
-
 
 def build_model2():
     
@@ -119,7 +120,7 @@ def build_model2():
     ])
 
     parameters={'vect__max_features': (None, 5000),
-                'ngram_range': [(1,1),(1,2),(1,3)],
+                'ngram_range': [(1,2)],
                 'tfidf__use_idf': (True, False),
                 'clf__estimator__n_estimators': [50, 100],
                 'clf__estimator__min_samples_split': [2, 3],
@@ -131,7 +132,8 @@ def build_model2():
     return cv
 
 
-def evaluate_model(model, X_test, Y_test):
+
+def evaluate_model(model,X_train,Y_train, X_test, Y_test):
     """
     Function to evaluate the model with classification report and accuracy
     Args:
@@ -140,6 +142,8 @@ def evaluate_model(model, X_test, Y_test):
     Y_test: test dataframe with the target-data
     """
     model = build_model()
+    model.fit(X_train,Y_train)
+    
     Y_pred = model.predict(X_test)
     i = 0
     for col in Y_test:
@@ -149,7 +153,7 @@ def evaluate_model(model, X_test, Y_test):
     accuracy = (Y_pred == Y_test.values).mean()
     print('The model accuracy is {:.3f}'.format(accuracy))
 
-def evaluate_model2(model, X_test, Y_test):
+def evaluate_model2(model,X_train,Y_train, X_test, Y_test):
     
     """
     Function to evaluate the model with classification report 
@@ -160,6 +164,8 @@ def evaluate_model2(model, X_test, Y_test):
     Y_test: test dataframe with the target-data
     """
     model = build_model2()
+    model.fit(X_train,Y_train)
+
     Y_pred = model.predict(X_test)
     i = 0
     for col in Y_test:
@@ -194,7 +200,7 @@ def main():
         model.fit(X_train, Y_train)
         
         print('Evaluating model...')
-        evaluate_model(model, X_test, Y_test, category_names)
+        evaluate_model(model,X_train,Y_train, X_test, Y_test)
 
         print('Saving model...\n    MODEL: {}'.format(model_filepath))
         save_model(model, model_filepath)
