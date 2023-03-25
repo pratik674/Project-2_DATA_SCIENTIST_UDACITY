@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Mar 25 10:52:10 2023
+Created on Sat Mar 25 23:07:00 2023
 
 @author: prati
 """
@@ -103,7 +103,9 @@ def build_model():
 
     cv = GridSearchCV(pipeline, param_grid=parameters, n_jobs=-1, verbose=3)
     
-    return cv
+   
+
+    return pipeline
 
 def build_model2():
     
@@ -153,7 +155,7 @@ def evaluate_model(model,X_train,Y_train, X_test, Y_test):
     accuracy = (Y_pred == Y_test.values).mean()
     print('The model accuracy is {:.3f}'.format(accuracy))
 
-def evaluate_model2(model,X_train,Y_train, X_test, Y_test):
+def evaluate_model2(model, X_test, Y_test):
     
     """
     Function to evaluate the model with classification report 
@@ -164,8 +166,6 @@ def evaluate_model2(model,X_train,Y_train, X_test, Y_test):
     Y_test: test dataframe with the target-data
     """
     model = build_model2()
-    model.fit(X_train,Y_train)
-
     Y_pred = model.predict(X_test)
     i = 0
     for col in Y_test:
