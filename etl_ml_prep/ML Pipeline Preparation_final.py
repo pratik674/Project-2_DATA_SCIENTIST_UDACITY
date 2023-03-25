@@ -24,6 +24,8 @@ from nltk.corpus import stopwords
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import confusion_matrix
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.naive_bayes import BernoulliNB
+from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer,TfidfTransformer
 from sklearn.multioutput import MultiOutputClassifier
