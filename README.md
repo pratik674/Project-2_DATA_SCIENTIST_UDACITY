@@ -75,6 +75,7 @@ Screenshot of the Disaster Response Pipeline: shared in the main folder
 
 
 Reflection
+
 I am satisfied with the result and fully functional web app. Although everything works, there is still enough room for improvements:
 
 Testing different estimators to optimise the classification (RandomForestClassifier() was used in this project. Apart from this BernouilleNB was also tested and its run time is faster than that for RandomForestClassifier. 
