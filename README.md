@@ -8,7 +8,7 @@
 
 ### 3. Results
 
-### 4. Instructions
+### 4. Instructions & libraries used
 
 ### 5. Acknowledgements
 
@@ -82,17 +82,26 @@ Setting an extended list of parameters for GridSearchCV to optimise the model (l
 
 
 
-Instructions
-This instruction were originally made by the team at Udacity's.
+#### Instructions
+This instruction were originally made by the team at Udacity's:
 
-Run the following commands in the project's root directory to set up your database and model.
+            1. Run the following commands in the project's root directory to set up your database and model.
 
-To run ETL pipeline that cleans data and stores in database python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db
-To run ML pipeline that trains classifier and saves python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl
-Run the following command in the app's directory to run your web app. python run.py
+            - To run ETL pipeline that cleans data and stores in database
+            `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/InsertDatabaseName.db`
+            - To run ML pipeline that trains classifier and saves
+            `python models/train_classifier.py data/InsertDatabaseName.db models/classifier.pkl`
+
+            2. Go to `app` directory: `cd app`
+
+            3. Run your web app: `python run.py`
+
+            4. Click the `PREVIEW` button to open the homepage
+
+Scikit learn , nltk, pandas libraries were used to achieve the objective of this project. 
 
 Go to http://0.0.0.0:3000/
 
 
 Acknowledgments
-I would like to thank the team from Udacity's for the great support and the brilliant online course Data Scientist Nanodegree.
+I would like to thank the team from Udacity's for the detailed outline for this project and Figure Eight for providing the data to work with.
